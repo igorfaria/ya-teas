@@ -1,0 +1,191 @@
+ const allTeas = [
+  {
+    label: "Camomila",
+    value: "camomila",
+    shortDescription: "Calmante natural e digestiva, ideal para relaxar e melhorar a digestão.",
+    longDescription:
+      "Calmante natural e digestiva, ideal para relaxar e melhorar a digestão. A camomila é uma das ervas medicinais mais antigas da humanidade, com registros no Antigo Egito, Roma e Grécia. Rica em apigenina, atua diretamente nos receptores cerebrais, induzindo ao relaxamento. Evite em casos de alergia a plantas da família Asteraceae (ex: ambrósia, margarida).",
+    flavor: "Suave, levemente adocicado",
+    activePrinciples: ["Apigenina", "Camazuleno", "Bisabolol"],
+    categories: ["calmante", "digestiva", "anti-inflamatória"],
+    conditions: ["insônia", "ansiedade", "má digestão"],
+    recommendedPeriods: ["night"],
+    weeklyMaxFrequency: 5,
+    quantity: "2g por xícara",
+    infusion: "5 minutos"
+  },
+  {
+    label: "Erva-doce",
+    value: "erva_doce",
+    shortDescription: "Digestiva, calmante e eficaz contra cólicas.",
+    longDescription:
+      "Digestiva, calmante e eficaz contra cólicas. A erva-doce (ou funcho) era recomendada por Hipócrates e muito usada por parteiras para aliviar cólicas em lactentes. Seu composto anetol tem ação relaxante nos músculos lisos intestinais. Evite em grandes quantidades durante a gravidez e em pessoas com histórico de câncer hormonal.",
+    flavor: "Adocicado e anisado",
+    activePrinciples: ["Anetol", "Fenchona", "Estragol"],
+    categories: ["digestiva", "calmante", "antiespasmódica"],
+    conditions: ["gases", "cólicas", "ansiedade leve"],
+    recommendedPeriods: ["afternoon", "night"],
+    weeklyMaxFrequency: 5,
+    quantity: "1.5g por xícara",
+    infusion: "7 minutos"
+  },
+  {
+    label: "Hortelã",
+    value: "hortela",
+    shortDescription: "Refrescante, facilita a digestão e alivia sintomas respiratórios.",
+    longDescription:
+      "Refrescante, facilita a digestão e alivia sintomas respiratórios. Usada desde a antiguidade grega, a hortelã possui mentol, que acalma os músculos do trato digestivo e abre as vias aéreas. Pode irritar mucosas em excesso ou causar refluxo em indivíduos sensíveis.",
+    flavor: "Refrescante e mentolado",
+    activePrinciples: ["Mentol", "Mentona", "Flavonoides"],
+    categories: ["digestiva", "expectorante", "revigorante"],
+    conditions: ["indigestão", "náusea", "congestão nasal"],
+    recommendedPeriods: ["morning", "afternoon"],
+    weeklyMaxFrequency: 5,
+    quantity: "2g por xícara",
+    infusion: "5 minutos"
+  },
+  {
+    label: "Melissa",
+    value: "melissa",
+    shortDescription: "Calmante suave, combate ansiedade e estresse leve.",
+    longDescription:
+      "Calmante suave, combate ansiedade e estresse leve. A melissa é chamada também de erva-cidreira verdadeira. Suas propriedades sedativas eram usadas em mosteiros medievais para acalmar monges. Deve ser usada com cautela por quem já toma ansiolíticos ou sedativos.",
+    flavor: "Levemente cítrico e suave",
+    activePrinciples: ["Citral", "Geraniol", "Limoneno"],
+    categories: ["calmante", "ansiolítica", "antioxidante"],
+    conditions: ["estresse", "ansiedade", "insônia"],
+    recommendedPeriods: ["afternoon", "night"],
+    weeklyMaxFrequency: 4,
+    quantity: "2g por xícara",
+    infusion: "6 minutos"
+  },
+  {
+    label: "Alecrim",
+    value: "alecrim",
+    shortDescription: "Estimulante mental e antioxidante, bom para foco e memória.",
+    longDescription:
+      "Estimulante mental e antioxidante, bom para foco e memória. O alecrim era considerado símbolo da lembrança pelos romanos. Estudos modernos sugerem que o ácido rosmarínico pode melhorar funções cognitivas leves. Evite em excesso em hipertensos ou grávidas.",
+    flavor: "Aromático, amadeirado, levemente amargo",
+    activePrinciples: ["Ácido rosmarínico", "Cineol", "Carnosol"],
+    categories: ["estimulante", "antioxidante", "digestiva"],
+    conditions: ["fadiga mental", "baixa concentração", "indigestão"],
+    recommendedPeriods: ["morning", "afternoon"],
+    weeklyMaxFrequency: 3,
+    quantity: "1.5g por xícara",
+    infusion: "8 minutos"
+  }
+];
+    
+    allTeas.push(
+  {
+    label: "Gengibre",
+    value: "gengibre",
+    shortDescription: "Termogênico, digestivo e anti-inflamatório.",
+    longDescription:
+      "Termogênico, digestivo e anti-inflamatório. O gengibre era usado na medicina chinesa há mais de 3 mil anos. Seus compostos gingerol e shogaol têm efeitos reconhecidos contra náuseas, dores e inflamações. Evitar em casos de gastrite grave ou uso de anticoagulantes.",
+    flavor: "Picante e quente",
+    activePrinciples: ["Gingerol", "Shogaol", "Zingerona"],
+    categories: ["termogênico", "digestiva", "anti-inflamatória"],
+    conditions: ["má digestão", "dor muscular", "náuseas"],
+    recommendedPeriods: ["morning", "afternoon"],
+    weeklyMaxFrequency: 4,
+    quantity: "1.5g por xícara",
+    infusion: "6 minutos"
+  },
+  {
+    label: "Canela",
+    value: "canela",
+    shortDescription: "Estimulante, digestiva e termogênica.",
+    longDescription:
+      "Estimulante, digestiva e termogênica. A canela é usada há milênios na medicina ayurvédica. Seu componente cinamaldeído tem ação vasodilatadora e metabólica. Contraindicada em grandes quantidades para grávidas, pois pode induzir contrações.",
+    flavor: "Doce, quente e aromático",
+    activePrinciples: ["Cinamaldeído", "Eugenol", "Ácido cinâmico"],
+    categories: ["termogênico", "estimulante", "digestiva"],
+    conditions: ["baixa energia", "má digestão", "resfriados leves"],
+    recommendedPeriods: ["morning"],
+    weeklyMaxFrequency: 3,
+    quantity: "1g por xícara",
+    infusion: "10 minutos"
+  },
+  {
+    label: "Sálvia",
+    value: "salvia",
+    shortDescription: "Antisséptica e digestiva, excelente para garganta e estômago.",
+    longDescription:
+      "Antisséptica e digestiva, excelente para garganta e estômago. A palavra 'sálvia' vem do latim *salvare*, que significa curar. Usada por séculos como elixir bucal, também atua no equilíbrio hormonal. Contraindicada para gestantes e em grandes doses.",
+    flavor: "Amargo e herbal",
+    activePrinciples: ["Tujona", "Cineol", "Ácido rosmarínico"],
+    categories: ["digestiva", "anti-inflamatória", "antisséptica"],
+    conditions: ["garganta inflamada", "indigestão", "suor excessivo"],
+    recommendedPeriods: ["afternoon"],
+    weeklyMaxFrequency: 3,
+    quantity: "2g por xícara",
+    infusion: "5 minutos"
+  },
+  {
+    label: "Hibisco",
+    value: "hibisco",
+    shortDescription: "Diurético, antioxidante e auxiliar na perda de peso.",
+    longDescription:
+      "Diurético, antioxidante e auxiliar na perda de peso. O hibisco (Hibiscus sabdariffa) é popular no Caribe e na África. Rico em antocianinas, ajuda a proteger os rins e vasos. Pode interferir na pressão arterial e fertilidade se usado em excesso.",
+    flavor: "Ácido, levemente frutado",
+    activePrinciples: ["Antocianinas", "Ácido hibísico", "Vitamina C"],
+    categories: ["diurético", "antioxidante", "emagrecedor"],
+    conditions: ["retenção de líquidos", "pressão alta", "inflamação leve"],
+    recommendedPeriods: ["afternoon"],
+    weeklyMaxFrequency: 4,
+    quantity: "2g por xícara",
+    infusion: "10 minutos"
+  },
+  {
+    label: "Boldo",
+    value: "boldo",
+    shortDescription: "Hepatoprotetor e digestivo amargo, eficaz após excessos alimentares.",
+    longDescription:
+      "Hepatoprotetor e digestivo amargo, eficaz após excessos alimentares. O boldo chileno possui boldina, um alcaloide protetor do fígado. Muito usado na América do Sul. Deve ser evitado em gravidez, lactação e por pessoas com obstrução biliar.",
+    flavor: "Amargo e forte",
+    activePrinciples: ["Boldina", "Flavonoides", "Óleos essenciais"],
+    categories: ["digestiva", "hepática", "anti-inflamatória"],
+    conditions: ["fígado preguiçoso", "má digestão", "ressaca"],
+    recommendedPeriods: ["night"],
+    weeklyMaxFrequency: 2,
+    quantity: "1g por xícara",
+    infusion: "5 minutos"
+  }
+);
+    
+    allTeas.push(
+  {
+    label: "Tanchagem",
+    value: "tanchagem",
+    shortDescription: "Calmante de mucosas, útil em tosse, inflamações e feridas.",
+    longDescription:
+      "Calmante de mucosas, útil em tosse, inflamações e feridas. A tanchagem (Plantago) é usada desde a Antiguidade para cicatrização e inflamações respiratórias. Suas mucilagens têm efeito protetor. Não usar por tempo prolongado sem orientação.",
+    flavor: "Suave, herbáceo",
+    activePrinciples: ["Aucubina", "Taninos", "Flavonoides"],
+    categories: ["expectorante", "cicatrizante", "anti-inflamatória"],
+    conditions: ["tosse", "feridas", "irritações respiratórias"],
+    recommendedPeriods: ["afternoon", "night"],
+    weeklyMaxFrequency: 3,
+    quantity: "1.5g por xícara",
+    infusion: "7 minutos"
+  },
+  {
+    label: "Carqueja",
+    value: "carqueja",
+    shortDescription: "Depurativa, amargante e digestiva.",
+    longDescription:
+      "Depurativa, amargante e digestiva. A carqueja é tradicional na medicina brasileira para fígado e má digestão. Seus flavonoides ajudam na função hepática. Pode reduzir glicemia, devendo ser evitada com hipoglicemiantes.",
+    flavor: "Amargo e intenso",
+    activePrinciples: ["Flavonoides", "Terpenos", "Quercetina"],
+    categories: ["digestiva", "depurativa", "anti-inflamatória"],
+    conditions: ["excesso de toxinas", "fígado sobrecarregado", "indigestão"],
+    recommendedPeriods: ["morning", "afternoon"],
+    weeklyMaxFrequency: 3,
+    quantity: "2g por xícara",
+    infusion: "7 minutos"
+  },
+  {
+    label: "Erva-cidreira",
+    value: "erva_cidreira",
+    shortDescription: "Calmante suave e digestiva com efeit
