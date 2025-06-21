@@ -1,0 +1,97 @@
+ function app() {
+    return {
+      isDark: false,
+      allTeas: [],
+      filteredTeas: [],
+      teasOfDay: { morning: [], afternoon: [], night: [] },
+      teaDayPeriods: [],
+      filters: {
+        categories: [],
+        conditions: [],
+        periods: [],
+      },
+
+      init() {
+        this.isDark = localStorage.getItem('theme') === 'dark';
+        this.allTeas = [...allTeas].map(t => ({ ...t, expanded: false }));
+        this.filteredTeas = this.allTeas;
+
+        this.generateDailyTeas();
+        this.updateTeaDayPeriods();
+      },
+
+      toggleTheme() {
+        this.isDark = !this.isDark;
+        localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+      },
+
+      formatPeriod(p) {
+        return { morning: '🌅 Manhã', afternoon: '🌇 Tarde', night: '🌙 Noite' }[p] || p;
+      },
+
+      generateDailyTeas() {
+        const today = new Date();
+        const seed = today.getDate() + today.getMonth();
+        const categoriesByPeriod = {
+          morning: ['estimulante', 'revigorante', 'antioxidante'],
+          afternoon: ['digestiva', 'revigorante'],
+          night: ['calmante', 'ansiolítica']
+        };
+
+        const pickTeas = (cats, avoid = []) => {
+          const options = this.allTeas.filter(
+            t => t.categories.some(c => cats.includes(c)) && !t.categories.some(c => avoid.includes(c))
+          );
+          const selected = [];
+          for (let i = 0; i < options.length && selected.length < 2; i++) {
+            const index = (seed * (i + 1)) % options.length;
+            const tea = options[index];
+            if (!selected.includes(tea)) selected.push(tea);
+          }
+          return selected.slice(0, 2);
+        };
+
+        this.teasOfDay.morning = pickTeas(categoriesByPeriod.morning);
+        this.teasOfDay.afternoon = pickTeas(categoriesByPeriod.afternoon, ['sono']);
+        this.teasOfDay.night = pickTeas(categoriesByPeriod.night);
+      },
+
+      updateTeaDayPeriods() {
+        this.teaDayPeriods = [
+          {
+            title: this.formatPeriod("morning"),
+            teas: this.teasOfDay.morning
+          },
+          {
+            title: this.formatPeriod("afternoon"),
+            teas: this.teasOfDay.afternoon
+          },
+          {
+            title: this.formatPeriod("night"),
+            teas: this.teasOfDay.night
+          }
+        ];
+      },
+
+      toggleFilter(type, value) {
+        const list = this.filters[type];
+        const i = list.indexOf(value);
+        if (i >= 0) list.splice(i, 1);
+        else list.push(value);
+        this.applyFilters();
+      },
+
+      applyFilters() {
+        this.filteredTeas = this.allTeas.filter(tea => {
+          const catMatch = this.filters.categories.length === 0 || this.filters.categories.some(f => tea.categories.includes(f));
+          const condMatch = this.filters.conditions.length === 0 || this.filters.conditions.some(f => tea.conditions.includes(f));
+          const periodMatch = this.filters.periods.length === 0 || this.filters.periods.some(f => tea.recommendedPeriods.includes(f));
+          return catMatch && condMatch && periodMatch;
+        });
+      },
+
+      isFilterActive(type, value) {
+        return this.filters[type].includes(value);
+      }
+    };
+  }
